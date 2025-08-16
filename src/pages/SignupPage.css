@@ -1,0 +1,136 @@
+/* src/pages/SignupPage.css */
+
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - var(--navbar-height, 60px) - var(--footer-height, 50px)); /* Adjust based on your NavBar and Footer height */
+    background-color: #f0f2f5;
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.signup-card {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; /* Max width for the card */
+    text-align: center;
+}
+
+.signup-card h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left; /* Align labels and inputs to the left */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box; /* Ensures padding doesn't increase total width */
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.signup-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 10px;
+}
+
+.signup-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.signup-button:active {
+    transform: translateY(0);
+}
+
+.signup-message {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 0.95em;
+    font-weight: 500;
+}
+
+.signup-message.error-message {
+    background-color: #f8d7da;
+    color: #dc3545;
+    border: 1px solid #f5c6cb;
+}
+
+.signup-message.success-message {
+    background-color: #d4edda;
+    color: #28a745;
+    border: 1px solid #c3e6cb;
+}
+
+.login-link {
+    margin-top: 25px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.login-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .signup-card {
+        padding: 30px 20px;
+        margin: 0 15px; /* Add some margin on very small screens */
+    }
+
+    .signup-card h2 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    .form-group input,
+    .signup-button {
+        padding: 10px 12px;
+        font-size: 0.95em;
+    }
+}

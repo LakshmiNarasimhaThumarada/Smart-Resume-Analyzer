@@ -1,0 +1,59 @@
+/* src/components/Footer.css */
+
+.app-footer {
+    width: 100%;
+    padding: 30px 0; /* Increased padding to match other sections */
+    margin-top: 40px; /* Space above the footer from the content above it */
+    text-align: center;
+    color: #666666;
+    font-size: 0.9em;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    background-color: rgba(240, 248, 255, 0.8); /* Very light pastel blue */
+    border-radius: 15px; /* Added border radius to match other cards */
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08); /* Shadow to top, like other sections */
+}
+
+.app-footer p {
+    margin-bottom: 10px;
+    color: #666666;
+}
+
+.company-info {
+    margin-top: 15px;
+    font-size: 0.95em;
+    color: #555555;
+}
+
+.footer-links {
+    margin-top: 15px;
+    margin-bottom: 10px; /* Space between link groups */
+}
+
+.footer-links a, .footer-small-links a {
+    color: #1e90ff;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover, .footer-small-links a:hover {
+    color: #8a2be2;
+    text-decoration: underline;
+}
+
+.footer-small-links {
+    font-size: 0.8em; /* Make these links slightly smaller */
+    color: #888888;
+}
+
+/* Responsive adjustments for footer */
+@media (max-width: 768px) {
+    .app-footer {
+        padding: 20px 0;
+        margin-top: 25px;
+        font-size: 0.8em;
+    }
+    .footer-links a, .footer-small-links a {
+        margin: 0 5px;
+    }
+}

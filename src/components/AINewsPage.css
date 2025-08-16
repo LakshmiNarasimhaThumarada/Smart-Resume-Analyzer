@@ -1,0 +1,189 @@
+/* src/components/AINewsPage.css */
+
+/* General Container Styling */
+.ai-news-container {
+    max-width: 1200px; /* Increased max-width for wider screens */
+    margin: 40px auto;
+    padding: 30px; /* Slightly more padding */
+    background-color: #f8f9fa; /* Lighter background */
+    border-radius: 10px; /* Softer rounded corners */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Stronger, softer shadow */
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; /* Modern font stack */
+    color: #343a40; /* Darker text for better contrast */
+}
+
+/* Heading Styling */
+.ai-news-container h1 {
+    text-align: center;
+    color: #007bff; /* Primary brand color for heading */
+    margin-bottom: 40px; /* More space below heading */
+    font-size: 2.8em; /* Larger heading */
+    font-weight: 700; /* Bolder */
+    letter-spacing: -0.5px; /* Slight letter spacing adjustment */
+}
+
+/* News List Grid Layout */
+.ai-news-list {
+    display: grid;
+    /* Responsive grid for articles: at least 300px wide, max 1fr (fraction of available space) */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* Consistent gap between articles */
+}
+
+/* Individual News Item Styling */
+.ai-news-item {
+    background-color: #ffffff;
+    border: 1px solid #e9ecef; /* Lighter border */
+    border-radius: 10px; /* Match container border-radius */
+    overflow: hidden; /* Ensures content within rounds with borders */
+    display: flex;
+    flex-direction: column; /* Default to column for small screens */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Enhanced shadow for items */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transitions */
+}
+
+.ai-news-item:hover {
+    transform: translateY(-8px); /* More pronounced lift effect */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+/* Article Image Styling */
+.ai-news-image {
+    width: 100%;
+    height: 220px; /* Slightly increased fixed height */
+    object-fit: cover; /* Crop and cover the area */
+    display: block;
+    border-bottom: 1px solid #e9ecef; /* Separator for image */
+}
+
+/* Article Content Styling */
+.ai-news-content {
+    padding: 25px; /* More padding inside content area */
+    flex-grow: 1; /* Allows content to take available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes "Read More" to bottom */
+}
+
+.ai-news-content h2 {
+    font-size: 1.6em; /* Slightly larger title */
+    color: #0056b3; /* Slightly darker primary color for titles */
+    margin-top: 0;
+    margin-bottom: 15px; /* More space below title */
+    line-height: 1.4;
+    font-weight: 600; /* Bolder title */
+}
+
+.ai-news-author,
+.ai-news-date {
+    font-size: 0.85em; /* Slightly smaller for metadata */
+    color: #6c757d; /* Muted color for metadata */
+    margin-bottom: 8px; /* Consistent spacing */
+}
+
+.ai-news-description {
+    font-size: 0.95em; /* Slightly larger description text */
+    line-height: 1.7; /* Improved line height for readability */
+    color: #495057; /* Darker grey for body text */
+    margin-bottom: 20px; /* More space before read more */
+    overflow: hidden; /* Ensure text doesn't overflow */
+
+    /* For truncating text with ellipsis - includes standard and vendor-prefixed versions */
+    display: -webkit-box;
+    display: box; /* Standard (older flexbox for this property) */
+    -webkit-line-clamp: 3; /* WebKit browsers */
+    line-clamp: 3; /* Standard property */
+    -webkit-box-orient: vertical; /* WebKit browsers */
+    box-orient: vertical; /* Standard (older flexbox for this property) */
+}
+
+/* Read More Link Styling */
+.ai-news-read-more {
+    display: inline-block;
+    background-color: #007bff; /* Primary blue button */
+    color: white;
+    padding: 12px 20px; /* Larger padding for button */
+    border-radius: 6px; /* Slightly more rounded button */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: flex-start; /* Align button to start within its flex container */
+}
+
+.ai-news-read-more:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Error and No Results Messages */
+.error-message {
+    color: #dc3545; /* Bootstrap danger red */
+    text-align: center;
+    font-size: 1.3em;
+    padding: 25px;
+    border: 1px solid #dc3545;
+    background-color: #f8d7da; /* Light red background */
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+.no-results {
+    text-align: center;
+    font-size: 1.3em;
+    color: #6c757d;
+    padding: 25px;
+    background-color: #e2e3e5;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+/* Loading State */
+.ai-news-container.loading {
+    min-height: 300px; /* Ensure loading message is visible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: #6c757d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .ai-news-container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .ai-news-container h1 {
+        font-size: 2.2em;
+        margin-bottom: 30px;
+    }
+
+    .ai-news-list {
+        grid-template-columns: 1fr; /* Stack articles on small screens */
+    }
+
+    .ai-news-item {
+        flex-direction: column; /* Ensure stacked layout on small screens */
+    }
+
+    .ai-news-image {
+        height: 180px; /* Adjust image height for smaller screens */
+    }
+
+    .ai-news-content h2 {
+        font-size: 1.4em;
+    }
+
+    .ai-news-description {
+        -webkit-line-clamp: 4; /* Allow more lines for description on smaller screens */
+        line-clamp: 4; /* Standard property */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .ai-news-list {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens */
+    }
+}

@@ -1,0 +1,325 @@
+/* src/components/SideNavBar.css */
+
+.sidenavbar {
+    width: 320px; /* KEY CHANGE 1: Increased expanded width from 280px to 320px */
+    background-color: rgba(255, 255, 255, 0.9); /* Base background for the sidebar */
+    
+    position: fixed !important;
+    top: 90px !important;
+    left: 0 !important;
+    height: calc(100vh - 90px) !important;
+    z-index: 999 !important;
+
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    padding-top: 40px;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow-y: auto; /* Allow sidebar to scroll vertically if content overflows */
+    border-radius: 0 15px 15px 0;
+    
+    transition: width 0.3s ease, padding 0.3s ease;
+}
+
+/* Sidebar collapse/expand button within the sidebar itself */
+/* --- START OF NEW TOGGLE BUTTON STYLING --- */
+.sidebar-collapse-toggle-btn {
+    position: absolute;
+    top: 25px; /* Adjusted top for sleek look */
+    right: -10px; /* Positioned slightly outside the sidebar for a "pull" effect */
+    background: white; /* Clean white background */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
+    width: 30px; /* Smaller width */
+    height: 50px; /* Taller height */
+    border-radius: 8px; /* Rounded rectangular shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.2s ease, border-color 0.2s ease;
+    z-index: 10;
+
+    /* Styling for the arrow icon */
+    font-size: 1.2em; /* Size of the arrow */
+    color: #1e90ff; /* Blue color for the arrow */
+}
+
+.sidebar-collapse-toggle-btn:hover {
+    background-color: #f0f2f5; /* Light background on hover */
+    border-color: #1e90ff; /* Blue border on hover */
+    box-shadow: 0 4px 12px rgba(30, 144, 255, 0.2); /* Enhanced blue shadow on hover */
+    transform: translateX(-3px); /* Slightly move left on hover */
+}
+
+/* Default arrow direction (pointing left) */
+.sidebar-collapse-toggle-btn::before {
+    content: '❮'; /* Left-pointing arrow character */
+    display: block;
+    transition: transform 0.3s ease, color 0.2s ease;
+}
+
+/* Rotate arrow when collapsed (pointing right) */
+.sidenavbar.collapsed .sidebar-collapse-toggle-btn {
+    right: -10px; /* Keep it outside when collapsed */
+    /* Rotate the entire button so the arrow points correctly */
+    transform: rotate(180deg);
+}
+/* Ensure hover effect for collapsed state is also rotated */
+.sidenavbar.collapsed .sidebar-collapse-toggle-btn:hover {
+    transform: rotate(180deg) translateX(-3px); /* Rotate and then translate */
+}
+
+
+/* --- END OF NEW TOGGLE BUTTON STYLING --- */
+
+
+/* Collapsed state for SideNavBar */
+.sidenavbar.collapsed {
+    width: 60px;
+    padding-left: 5px;
+    padding-right: 5px;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.sidenavbar-title {
+    font-size: 1.8em;
+    color: #1e90ff;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+}
+.sidenavbar.collapsed .sidenavbar-title { 
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidenavbar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.sidenavbar-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 1em;
+    color: #555;
+    cursor: pointer;
+    font-weight: 500;
+    white-space: nowrap;
+    
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.sidenavbar.collapsed .sidenavbar-item.active,
+.sidenavbar.collapsed .sidenavbar-item:hover {
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #555 !important;
+}
+
+
+.sidenavbar-item-icon {
+    position: relative;
+    font-size: 1.2em;
+    margin-right: 10px;
+    min-width: 1.2em;
+    text-align: center;
+    transition: margin-right 0.3s ease, opacity 0.3s ease, min-width 0.3s ease;
+}
+.sidenavbar-item-icon::before {
+    content: '●';
+    color: #8a2be2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1;
+    transition: opacity 0.3s ease, content 0.3s ease;
+}
+
+.sidenavbar.collapsed .sidenavbar-item-icon {
+    opacity: 0 !important;
+    margin-right: 0 !important;
+    pointer-events: none !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+}
+.sidenavbar.collapsed .sidenavbar-item-icon::before {
+    content: '' !important;
+    opacity: 0 !important;
+}
+
+
+.sidenavbar-item-text {
+    flex-grow: 1;
+    opacity: 1;
+    width: auto;
+    overflow: visible;
+    pointer-events: auto;
+    transition: opacity 0.3s ease, width 0.3s ease, overflow 0.3s ease, pointer-events 0.3s ease;
+}
+
+.sidenavbar.collapsed .sidenavbar-item-text {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+
+.sidenavbar-item:hover {
+    background-color: rgba(30, 144, 255, 0.1);
+    color: #1e90ff;
+}
+
+.sidenavbar-item.active {
+    background: linear-gradient(90deg, #1e90ff, #8a2be2);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.sidenavbar-item.active:hover {
+    background: linear-gradient(90deg, #8a2be2, #1e90ff);
+    color: white;
+}
+
+/* Custom scrollbar for sidebar (optional, matches analyze page) */
+.sidenavbar::-webkit-scrollbar {
+    width: 8px;
+}
+.sidenavbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+.sidenavbar::-webkit-scrollbar-thumb {
+    background: rgba(100, 100, 255, 0.3);
+    border-radius: 10px;
+}
+.sidenavbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 100, 255, 0.6);
+}
+
+/* Responsive Adjustments for SideNavBar */
+@media (max-width: 992px) {
+    .sidenavbar {
+        width: 260px !important;
+        padding: 15px !important;
+        padding-top: 30px !important;
+        top: 90px !important;
+        height: calc(100vh - 90px) !important;
+    }
+    /* Adjusted for new button size */
+    .sidebar-collapse-toggle-btn {
+        right: -8px; /* Maintain slightly outside positioning */
+        top: 20px; /* Adjust top */
+        width: 25px; /* Slightly smaller on tablet */
+        height: 40px; /* Slightly smaller height */
+        font-size: 1.1em; /* Adjust arrow size */
+    }
+    .sidenavbar.collapsed .sidebar-collapse-toggle-btn {
+        transform: rotate(180deg); /* Full rotate on collapsed */
+    }
+    .sidenavbar.collapsed .sidebar-collapse-toggle-btn:hover {
+        transform: rotate(180deg) translateX(-2px); /* Rotate and then translate */
+    }
+
+
+    .sidenavbar.collapsed {
+        width: 60px !important;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .sidenavbar-title {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+    .sidenavbar-item {
+        padding: 10px 12px;
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar-collapse-toggle-btn {
+        display: none; /* Hide the button entirely on mobile as sidebar becomes horizontal */
+    }
+    .sidenavbar {
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        padding: 15px 10px !important;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+        border-radius: 0 !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+        margin-bottom: 20px !important;
+        top: auto !important;
+        left: auto !important;
+        z-index: auto !important;
+        
+        transition: none !important;
+        transform: none !important;
+        overflow-x: auto !important;
+        align-items: flex-start;
+    }
+    .sidenavbar.collapsed .sidenavbar-title,
+    .sidenavbar.collapsed .sidenavbar-item-icon,
+    .sidenavbar.collapsed .sidenavbar-item-text {
+        opacity: 1 !important;
+        width: auto !important;
+        overflow: visible !important;
+        pointer-events: auto !important;
+        margin-right: 10px !important;
+        text-align: left !important;
+        justify-content: flex-start !important;
+    }
+    .sidenavbar-item-icon::before {
+        content: '●' !important;
+        opacity: 1 !important;
+        position: static !important;
+        transform: none !important;
+        color: #8a2be2 !important;
+    }
+    .sidenavbar-menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .sidenavbar-item {
+        flex: 1 1 auto;
+        max-width: 45%;
+        text-align: center;
+        margin-bottom: 0;
+        padding: 8px 10px;
+        font-size: 0.9em;
+        white-space: nowrap;
+    }
+    .sidenavbar-title {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidenavbar-item {
+        max-width: 100%;
+    }
+}
