@@ -1,2 +1,51 @@
-# Smart-Resume-Analyzer
-Smart Resume Analyzer – A full-stack web application built with ReactJS and Spring Boot that analyzes resumes and matches them with job descriptions. Utilizes Apache Tika for text extraction, Google Gemini API for NLP, and TF-IDF with cosine similarity to provide accurate skill-based matching and job relevance scoring.
+Smart Resume Analyzer
+
+The Smart Resume Analyzer is a full-stack web application that helps job seekers and recruiters by analyzing resumes and matching them with job descriptions. It leverages Natural Language Processing (NLP) and machine learning techniques to calculate skill relevance, giving a clear match score between resumes and job roles.
+
+ Features
+
+ Resume Parsing: Extracts text from resumes using Apache Tika.
+
+ AI-Powered NLP: Integrated Google Gemini API for natural language understanding.
+
+Intelligent Matching: Uses TF-IDF with cosine similarity for accurate skill-based matching.
+
+ Match Score Calculation: Provides a relevance score between resumes and job descriptions.
+
+History Tracking: Stores analyzed results in a database for future reference.
+
+ Modern UI: Built with ReactJS for a clean and interactive user experience.
+
+Tech Stack
+Frontend
+
+ReactJS
+
+Tailwind CSS / CSS Modules
+
+Backend
+
+Spring Boot (Java)
+
+Apache Tika (Resume text extraction)
+
+Google Gemini API (NLP)
+
+TF-IDF + Cosine Similarity (Skill matching algorithm)
+
+
+ Project Structure
+Smart-Resume-Analyzer/
+│── frontend/          # ReactJS client
+│── backend/           # Spring Boot server
+│── database/          # DB schema & scripts
+│── README.md
+
+ Installation & Setup
+Prerequisites
+
+Node.js & npm
+
+Java (JDK 17+)
+
+Maven
