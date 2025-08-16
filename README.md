@@ -1,12 +1,55 @@
-# React + Vite
+Smart Resume Analyzer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The Smart Resume Analyzer is a full-stack web application that helps job seekers and recruiters by analyzing resumes and matching them with job descriptions. It leverages Natural Language Processing (NLP) and machine learning techniques to calculate skill relevance, giving a clear match score between resumes and job roles.
 
-Currently, two official plugins are available:
+Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ Resume Parsing: Extracts text from resumes using Apache Tika.
 
-## Expanding the ESLint configuration
+ AI-Powered NLP: Integrated Google Gemini API for natural language understanding.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+ Intelligent Matching: Uses TF-IDF with cosine similarity for accurate skill-based matching.
+
+ Match Score Calculation: Provides a relevance score between resumes and job descriptions.
+
+ History Tracking: Stores analyzed results in a database for future reference.
+
+ Modern UI: Built with ReactJS for a clean and interactive user experience.
+
+🛠 Tech Stack
+Frontend
+
+ReactJS
+
+Tailwind CSS / CSS Modules
+
+Backend
+
+Spring Boot (Java)
+
+Apache Tika (Resume text extraction)
+
+Google Gemini API (NLP)
+
+TF-IDF + Cosine Similarity (Skill matching algorithm)
+
+Database
+
+MySQL / PostgreSQL
+
+ Project Structure
+Smart-Resume-Analyzer/
+│── frontend/          # ReactJS client
+│── backend/           # Spring Boot server         
+│── README.md
+
+Installation & Setup
+Prerequisites
+
+Node.js & npm
+
+Java (JDK 17+)
+
+Maven
+
+MySQL / PostgreSQL
